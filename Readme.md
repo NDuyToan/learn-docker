@@ -68,3 +68,18 @@ Mở teminal tại thư mục dự án. Build image theo cú pháp sau: `docker 
 -   `-d ( --detach)`: lệnh này yêu cầu docker chạy container ở chố độ nền (detached). Container sẽ chạy mà không chiếm giữ terminal của bạn, cho phép bạn tiếp tục gõ lệnh.
 -   `127.0.0.1:3000:3000`: Cấu trúc này có định dạng `IP_máy_chủ:cổng_máy_chủ:cổng_container`. Lệnh này cho phép bạn truy cập ứng dụng đang chạy bên trong container bằng cách mở trình duyệt và gõ http://127.0.0.1:3000 hoặc http://localhost:3000.
 -   `getting-started`: Tên của image Docker mà bạn muốn sử dụng để tạo container. Docker sẽ tìm image này trên máy của bạn và sử dụng nó làm "khuôn" để tạo container mới.
+
+## Tạo 1 container từ image
+
+`docker create --name my-web-app -p 127.0.0.1:3000:3000 getting-started`
+
+-   `docker create`: Lệnh để tạo một container từ một image.
+-   `--name my-web-app`: Chỉ định tên cho container là my-web-app để dễ dàng quản lý. Nếu không có tùy chọn này, Docker sẽ gán một tên ngẫu nhiên. -`p 127.0.0.1:3000:3000`: Ánh xạ cổng từ máy chủ (host) đến container.
+-   `getting-started`: Tên của image dùng để tạo container.
+    Sau khi chạy lệnh này, bạn có thể dùng `docker ps -a` để thấy container `my-web-app` đã được tạo nhưng trạng thái là `Created`
+
+### Khởi động container với docker start
+
+`docker start my-web-app`
+
+-   Lệnh này sẽ khởi động container my-web-app và chạy nó ở chế độ nền (detached) theo mặc định, giống như khi dùng -d với docker run
